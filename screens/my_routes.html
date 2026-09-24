@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Munandy Drive - Routes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dbdad9",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "outline": "#737783",
+                        "outline-variant": "#c3c6d4",
+                        "secondary-container": "#da3433",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-container": "#a1bbff",
+                        "tertiary-fixed-dim": "#a5c8ff",
+                        "inverse-primary": "#b0c6ff",
+                        "secondary": "#b6171e",
+                        "surface-variant": "#e3e2e2",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad6",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#001945",
+                        "primary": "#003178",
+                        "on-secondary-fixed-variant": "#930010",
+                        "on-primary-fixed-variant": "#00429c",
+                        "on-tertiary-fixed": "#001c3a",
+                        "surface": "#fbf9f9",
+                        "on-surface": "#1b1c1c",
+                        "background": "#fbf9f9",
+                        "tertiary": "#003567",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#d9e2ff",
+                        "on-surface-variant": "#434652",
+                        "surface-container": "#efeded",
+                        "surface-tint": "#2b5bb5",
+                        "on-secondary-fixed": "#410003",
+                        "surface-bright": "#fbf9f9",
+                        "on-secondary-container": "#fffbff",
+                        "primary-container": "#0d47a1",
+                        "tertiary-container": "#004c8e",
+                        "on-tertiary-container": "#93beff",
+                        "on-tertiary-fixed-variant": "#004786",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "tertiary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "tap-target-min": "48px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "baseline": "8px",
+                        "gutter-mobile": "16px",
+                        "xs": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg text-body-lg min-h-screen flex flex-col pt-16 pb-20 md:pb-0 md:pl-80">
+<!-- Web Navigation Drawer (hidden on mobile) -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 w-80 z-[60] p-4 flex-col gap-2 bg-white dark:bg-slate-900 rounded-r-2xl h-full shadow-2xl divide-y divide-slate-100 dark:divide-slate-800 transition-all duration-200">
+<!-- Header -->
+<div class="flex items-center gap-4 pb-4">
+<img alt="User profile" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkFIeFX6lmZfYlU3tbzEFDd19nVlYy4L7dugNTxkqOzE4j6DxECQTnOL9qqL_-wnAxPwxuUr9d8Qr1BC4kKluCxSbt_nNuPeZo6mft336xwl8Vwyk_gcrOr3UfVnHwotgsadKXVAjHQtDWK4LUe8mre8SV5wfkb8D0c2D6yF4CDCCzZoB_P9dGJTSy85l2b1Y61RqHX4D5vB48kDb8fXi0l3pgke_LxtCYlsce_8i4b2mKBdTH9NIz2MNSCr-1NEgYm8991qKANoQ"/>
+<div class="flex flex-col">
+<span class="font-title-lg text-title-lg text-blue-900 dark:text-blue-100 font-bold">Admin User</span>
+<span class="font-body-md text-body-md text-slate-500">Munandy Drive Logistics</span>
+</div>
+</div>
+<!-- Nav Items -->
+<nav class="flex-1 pt-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 min-h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+<span class="font-label-lg text-label-lg">Fleet Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 min-h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="font-label-lg text-label-lg">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 min-h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-lg text-label-lg">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 min-h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">manage_accounts</span>
+<span class="font-label-lg text-label-lg">Role Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Mobile TopAppBar -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-slate-950 font-['Inter'] text-base font-semibold tracking-tight border-b border-slate-200 dark:border-slate-800 transition-colors duration-200 active:opacity-70">
+<button aria-label="Menu" class="w-12 h-12 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<span class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Munandy Drive</span>
+<button aria-label="Profile" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 min-w-[48px] min-h-[48px] overflow-hidden">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI2otgdDWHbY1YHF4ZHVMXfWjXwFZivBQkJMq_r9QJYDsLA2IQ4u7sTKNYfIkQZLUGJ_vaGOdLUsi6PEFnTPcnmg4eQDsszBLAD_-CUiNfNP_0cTgp-51gzT0Zdh5GKVqMK_8k7bFn6tm45Co5DN1-v619x_FRC5AgnNSo93Vup51F52VocKF0dYtR_A43RwgiZfSS47iNuYH7cRWRlfdfGV3BqxCEz1nZU-UMSr9a8RfIrpKEeWay_hDyVLGUiQq-vSWvaepbx1Q"/>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto p-margin-mobile md:p-lg flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-sm md:flex-row md:items-end md:justify-between w-full mt-4 md:mt-0">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">My Routes</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage your assigned deliveries and pickups.</p>
+</div>
+<!-- Quick Filter Chips -->
+<div class="flex gap-2 mt-4 md:mt-0 overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 md:pb-0 hide-scrollbar">
+<button class="min-w-[48px] min-h-[48px] px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap border border-transparent">
+                    All Routes
+                </button>
+<button class="min-w-[48px] min-h-[48px] px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant">
+                    Active
+                </button>
+<button class="min-w-[48px] min-h-[48px] px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant">
+                    Upcoming
+                </button>
+</div>
+</div>
+<!-- Routes Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Active Route Card (Bento Style Focus) -->
+<div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white dark:bg-slate-900 border border-outline-variant rounded-xl overflow-hidden flex flex-col md:flex-row relative">
+<!-- Status Indicator Strip -->
+<div class="w-full md:w-2 bg-primary h-2 md:h-auto absolute top-0 left-0 md:relative"></div>
+<!-- Map / Visual Area -->
+<div class="w-full md:w-1/3 h-48 md:h-auto bg-surface-container-high relative border-b md:border-b-0 md:border-r border-outline-variant">
+<img alt="Map Route" class="w-full h-full object-cover opacity-80 mix-blend-multiply filter grayscale contrast-125" data-alt="A stylized, modern high-contrast map interface showing a delivery route tracing through a dense urban grid. The aesthetic is clean and corporate, utilizing a color palette of deep blues and crisp whites to match a professional logistics application. The lighting is flat and uniform, emphasizing functional clarity and efficiency over realism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVobtmLcDelWE55a5s6a3m8fJ4rfG1nFkdIGEsqg4egFezoLdIe7d9TIQvb08Fb-x08Zt8Lg1B9EW8yIyeUniV1Ac08Z_UoAovsu9N9pwAiOIuBSym45l7Eyx5FTDwtyVmAB_lSOqBCxdzXBatU864m4juX6Nk6OU8KT8UTkiZs-BIuxrZJdBACSnzFc3sBKhaqUD6YHPu31YWCjnkkdKQF0aSufbggGvduPQCKDhSn1hUiudFTF4GtsPTDn-M7DS_AByC2SuPzXE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+<div class="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">near_me</span>
+<span class="font-label-md text-label-md text-primary">In Progress</span>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-6 flex-1 flex flex-col justify-between gap-6">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2.5 py-1 rounded-sm bg-primary-fixed-dim text-on-primary-fixed-variant font-label-md text-label-md uppercase tracking-wider">Active</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Today, Oct 24</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface mb-1">Northside Industrial Route</h2>
+<p class="font-body-md text-body-md text-outline">14 Stops • Est. completion 4:30 PM</p>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full text-primary hover:bg-surface-container transition-colors min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4">
+<div class="w-8 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-0.5 h-6 bg-outline-variant my-1"></div>
+</div>
+<div class="flex-1 pb-2 border-b border-surface-container-highest">
+<span class="font-label-lg text-label-lg text-on-surface block">Current Stop: Horizon Tech Corp</span>
+<span class="font-body-md text-body-md text-on-surface-variant block">1200 Horizon Blvd, Suite 100</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full border-2 border-outline"></div>
+</div>
+<div class="flex-1">
+<span class="font-label-lg text-label-lg text-on-surface-variant block">Next: Apex Manufacturing</span>
+<span class="font-body-md text-body-md text-outline block">850 Industrial Pkwy</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 pt-2">
+<button class="flex-1 min-h-[48px] bg-primary text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+                             Resume Route
+                         </button>
+</div>
+</div>
+</div>
+<!-- Upcoming Route Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-5 flex flex-col gap-4 hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-2.5 py-1 rounded-sm bg-surface-container-highest text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Upcoming</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-outline block mb-1">Tomorrow, Oct 25</span>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Downtown Office Deliveries</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">8 Stops • Start 8:00 AM</p>
+</div>
+<div class="mt-auto pt-4 border-t border-surface-container-highest flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">P1</div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">P2</div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">+6</div>
+</div>
+<button class="min-w-[48px] min-h-[48px] flex items-center justify-center text-primary group-hover:bg-primary-fixed-dim rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Route Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-5 flex flex-col gap-4 hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-2.5 py-1 rounded-sm bg-surface-container-highest text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Upcoming</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-outline block mb-1">Thursday, Oct 26</span>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">South Metro Expansion</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">12 Stops • Start 7:30 AM</p>
+</div>
+<div class="mt-auto pt-4 border-t border-surface-container-highest flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">S1</div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">S2</div>
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white flex items-center justify-center text-xs font-bold text-outline">+10</div>
+</div>
+<button class="min-w-[48px] min-h-[48px] flex items-center justify-center text-primary group-hover:bg-primary-fixed-dim rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Completed Route Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-5 flex flex-col gap-4 opacity-80 hover:opacity-100 transition-opacity relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-2.5 py-1 rounded-sm bg-[#e6f4ea] text-[#137333] font-label-md text-label-md uppercase tracking-wider border border-[#ceead6]">Completed</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-outline block mb-1">Yesterday, Oct 23</span>
+<h3 class="font-title-lg text-title-lg text-outline mb-1 line-through decoration-outline/50">Eastside Logistics Run</h3>
+<p class="font-body-md text-body-md text-outline">18 Stops • Finished 3:45 PM</p>
+</div>
+<div class="mt-auto pt-4 border-t border-surface-container-highest flex justify-between items-center">
+<span class="font-label-md text-label-md text-[#137333] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        All stops completed
+                    </span>
+<button class="min-w-[48px] min-h-[48px] flex items-center justify-center text-outline hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">history</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-white dark:bg-slate-950 h-20 border-t border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-none">
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-['Inter'] text-[12px] font-medium">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 active:scale-95 transition-transform duration-150 ease-in-out min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">route</span>
+<span class="font-['Inter'] text-[12px] font-medium">Routes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-['Inter'] text-[12px] font-medium">Customers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">distance</span>
+<span class="font-['Inter'] text-[12px] font-medium">Tracking</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-['Inter'] text-[12px] font-medium">Profile</span>
+</button>
+</nav>
+</body></html>

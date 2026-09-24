@@ -1,0 +1,37 @@
+### Claude Code (local user config) ###
+.claude/settings.local.json
+
+### Android / Gradle ###
+*.iml
+.gradle
+/local.properties
+local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+.kotlin
+
+# Build logs / scratch
+/build_output.txt
+*.log
+
+### Backend (Node.js) ###
+# Secrets & environment
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# SQLite database (contains user data & password hashes)
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
+
+# Dependencies
+backend/node_modules/
+
+# Runtime logs & user uploads
+backend/logs/
+backend/uploads/

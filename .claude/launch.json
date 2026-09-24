@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "p2p-transfer",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["p2p-file-transfer/server.js"],
+      "port": 3000
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Munandy Drive - Route Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dbdad9",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "outline": "#737783",
+                        "outline-variant": "#c3c6d4",
+                        "secondary-container": "#da3433",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-container": "#a1bbff",
+                        "tertiary-fixed-dim": "#a5c8ff",
+                        "inverse-primary": "#b0c6ff",
+                        "secondary": "#b6171e",
+                        "surface-variant": "#e3e2e2",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad6",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#001945",
+                        "primary": "#003178",
+                        "on-secondary-fixed-variant": "#930010",
+                        "on-primary-fixed-variant": "#00429c",
+                        "on-tertiary-fixed": "#001c3a",
+                        "surface": "#fbf9f9",
+                        "on-surface": "#1b1c1c",
+                        "background": "#fbf9f9",
+                        "tertiary": "#003567",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#d9e2ff",
+                        "on-surface-variant": "#434652",
+                        "surface-container": "#efeded",
+                        "surface-tint": "#2b5bb5",
+                        "on-secondary-fixed": "#410003",
+                        "surface-bright": "#fbf9f9",
+                        "on-secondary-container": "#fffbff",
+                        "primary-container": "#0d47a1",
+                        "tertiary-container": "#004c8e",
+                        "on-tertiary-container": "#93beff",
+                        "on-tertiary-fixed-variant": "#004786",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "tertiary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "tap-target-min": "48px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "baseline": "8px",
+                        "gutter-mobile": "16px",
+                        "xs": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pt-16 pb-24 md:pb-0 font-body-md">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-950 text-blue-900 dark:text-blue-400 font-['Inter'] text-base font-semibold tracking-tight fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<button class="w-tap-target-min h-tap-target-min flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors duration-200 active:opacity-70 md:hidden">
+<span class="material-symbols-outlined" data-weight="fill">menu</span>
+</button>
+<span class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Munandy Drive</span>
+</div>
+<!-- Web Nav Cluster -->
+<nav class="hidden md:flex items-center gap-2">
+<a class="px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200" href="#">Dashboard</a>
+<a class="px-4 py-2 text-blue-900 dark:text-blue-400 font-bold bg-blue-100/50 dark:bg-blue-900/20 rounded-lg transition-colors duration-200" href="#">Routes</a>
+<a class="px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200" href="#">Customers</a>
+<a class="px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200" href="#">Tracking</a>
+<a class="px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors duration-200" href="#">Profile</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a male administrative user with short brown hair, wearing a dark navy collared shirt. He is looking directly at the camera with a subtle, confident smile. The lighting is soft and corporate, matching a clean, modern light-mode office environment. The background is a slightly blurred, bright workspace, adhering to a sophisticated color palette of crisp whites, soft grays, and deep corporate blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6-AYFUlNtN29WpJ1LfV_sPxbNb2uxrmttFMvdWR8pFU_lY9PRYqnm3CeuPgIZ0HZS7yXeAAj0rNksEmkAsY5lSJ_ZmkEY0p15NOB9z3Y_Lokom35K-sCilrBj8SfSKS21cPj5-ELxW6nb7JZR2UtmMJGK-GQ5Bbj_2ofAo_wku90q7tUOWk1KqC22XTG5QBZ4G91rOqQCQzjY2X5oPJhkMl-7xlvhu87lIc5J0vmZyFeguqFctyyPsmXRMqCgL7ePrN7WFjJd1tE"/>
+</div>
+</header>
+<!-- SideNav (Web) - Replaces drawer logic for wide screens -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 w-64 pt-20 pb-4 px-4 bg-surface-container-low border-r border-outline-variant flex-col gap-2 z-40">
+<div class="px-4 py-2 mb-4">
+<h2 class="font-label-lg text-on-surface-variant uppercase tracking-wider">Administration</h2>
+</div>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-lg text-label-lg">Fleet Overview</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-lg text-label-lg">Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-lg text-label-lg">Reports</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 mt-auto" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span class="font-label-lg text-label-lg">Role Settings</span>
+</a>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 p-margin-mobile md:p-lg max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-4">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Route Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Overview and scheduling of all delivery assignments.</p>
+</div>
+<div class="flex items-center gap-sm w-full md:w-auto">
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-12 pl-10 pr-4 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface outline-none transition-colors" placeholder="Search routes..." type="text"/>
+</div>
+<button class="h-12 px-4 bg-surface rounded-lg border border-outline-variant flex items-center gap-2 hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-lg text-label-lg hidden sm:inline">Filter</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout for Routes -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md">
+<!-- Active Route Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md flex flex-col hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        Active
+                    </div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Monday North B</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-lg">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-md text-body-md">Oct 24, 2023</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant font-label-lg text-label-lg">
+                            JD
+                        </div>
+<span class="font-label-lg text-label-lg text-on-surface">John Doe</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Draft Route Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md flex flex-col hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                        Draft
+                    </div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Tuesday South A</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-lg">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-md text-body-md">Oct 25, 2023</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-dashed border-outline flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</div>
+<span class="font-body-md text-body-md text-outline">Unassigned</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Completed Route Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-md flex flex-col opacity-75 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6F4EA] text-[#137333] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        Complete
+                    </div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Friday East Express</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-lg">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-body-md text-body-md">Oct 20, 2023</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-label-lg text-label-lg">
+                            SM
+                        </div>
+<span class="font-label-lg text-label-lg text-on-surface">Sarah Miller</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Inactive Route Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md flex flex-col hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                        Inactive
+                    </div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Holiday Special Route</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-lg">
+<span class="material-symbols-outlined text-[18px]">event_busy</span>
+<span class="font-body-md text-body-md">No schedule</span>
+</div>
+<div class="mt-auto pt-sm border-t border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-dashed border-outline flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+</div>
+<span class="font-body-md text-body-md text-outline">Unassigned</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Create Route FAB -->
+<button class="fixed bottom-24 md:bottom-8 right-4 md:right-8 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center hover:bg-on-primary-fixed-variant transition-all active:scale-95 z-40 group">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<!-- Tooltip -->
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface font-label-md text-label-md px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap hidden md:block">
+                Create Route
+            </span>
+</button>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-white dark:bg-slate-950 text-blue-900 dark:text-blue-400 font-['Inter'] text-[12px] font-medium fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface h-20 border-t border-slate-200 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out w-tap-target-min" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 active:scale-95 transition-transform duration-150 ease-in-out w-tap-target-min" href="#">
+<span class="material-symbols-outlined mb-1" data-weight="fill">route</span>
+<span>Routes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out w-tap-target-min" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span>Customers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out w-tap-target-min" href="#">
+<span class="material-symbols-outlined mb-1">distance</span>
+<span>Tracking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out w-tap-target-min" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</body></html>

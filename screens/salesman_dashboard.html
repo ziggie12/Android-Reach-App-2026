@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salesman Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dbdad9",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "outline": "#737783",
+                    "outline-variant": "#c3c6d4",
+                    "secondary-container": "#da3433",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-primary-container": "#a1bbff",
+                    "tertiary-fixed-dim": "#a5c8ff",
+                    "inverse-primary": "#b0c6ff",
+                    "secondary": "#b6171e",
+                    "surface-variant": "#e3e2e2",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdad6",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-high": "#e9e8e7",
+                    "on-background": "#1b1c1c",
+                    "on-primary-fixed": "#001945",
+                    "primary": "#003178",
+                    "on-secondary-fixed-variant": "#930010",
+                    "on-primary-fixed-variant": "#00429c",
+                    "on-tertiary-fixed": "#001c3a",
+                    "surface": "#fbf9f9",
+                    "on-surface": "#1b1c1c",
+                    "background": "#fbf9f9",
+                    "tertiary": "#003567",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#303031",
+                    "primary-fixed": "#d9e2ff",
+                    "on-surface-variant": "#434652",
+                    "surface-container": "#efeded",
+                    "surface-tint": "#2b5bb5",
+                    "on-secondary-fixed": "#410003",
+                    "surface-bright": "#fbf9f9",
+                    "on-secondary-container": "#fffbff",
+                    "primary-container": "#0d47a1",
+                    "tertiary-container": "#004c8e",
+                    "on-tertiary-container": "#93beff",
+                    "on-tertiary-fixed-variant": "#004786",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "tertiary-fixed": "#d4e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "tap-target-min": "48px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "baseline": "8px",
+                    "gutter-mobile": "16px",
+                    "xs": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["22px", {"lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<button aria-label="Menu" class="w-[48px] h-[48px] flex items-center justify-center text-blue-900 dark:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-70 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Munandy Drive</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant">
+<div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Online</span>
+</div>
+<img alt="User profile photo" class="w-[40px] h-[40px] rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a logistics worker wearing a dark blue uniform. The lighting is bright and clear, suitable for a corporate ID badge. The background is a plain, light grey to ensure the focus remains on the subject. The overall aesthetic is clean, modern, and trustworthy, fitting for a corporate logistics dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fyWn1S1xJbD4Z3TyBBiBhbDy5Cp8qF2Wsdt41Da-5G3XyFQKPOgOs0pQsbS_FD3TcfpMza_l1RfpGu6-enRvvTr-J2zJ0Z0cmQpFpsrkNLHNuTkOgBNS8S7vXXwsOfwM5jUH0QSEVcV74tEPa79MKHHimpyKh2PH6mtQoesXjJgPsqgaT7YtC584yqjGkBciKEU_hWOgQ_IVVrHG0d_snioeiomJAjUhLl5shIfKp2yOmMl7EZTou9cNia0INnrl-gxoU0wBX-I"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-lg py-lg flex flex-col gap-lg">
+<!-- Welcome Section -->
+<div class="flex flex-col gap-sm">
+<h2 class="font-headline-md text-headline-md text-on-background">Good Morning, Salesman</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is your dashboard for today's operations.</p>
+</div>
+<!-- Dashboard Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Assigned Route Card (Highlight) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg flex flex-col justify-between min-h-[300px] relative overflow-hidden shadow-sm">
+<!-- Decorative BG subtle pattern or gradient could go here if requested, keeping it clean for logistics -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider mb-1 block">Today's Assigned Route</span>
+<h3 class="font-title-lg text-title-lg text-on-background">North City Loop (Zone A)</h3>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="route">route</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">15 Stops</span>
+</div>
+</div>
+<div class="bg-surface rounded-lg p-md border border-outline-variant mt-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-lg text-label-lg text-on-background">First Stop Details</span>
+</div>
+<div class="pl-7 flex flex-col gap-1">
+<p class="font-body-lg text-body-lg text-on-background font-medium">Acme Corp Logistics Hub</p>
+<p class="font-body-md text-body-md text-on-surface-variant">123 Industrial Parkway, North City</p>
+<div class="flex gap-4 mt-2">
+<span class="font-label-md text-label-md text-outline">Expected Arrival: 08:30 AM</span>
+<span class="font-label-md text-label-md text-outline">Items: 42 Pallets</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 mt-xl">
+<button class="w-full h-[64px] bg-primary text-on-primary rounded-lg font-title-lg text-title-lg flex items-center justify-center gap-2 hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 active:scale-[0.98] shadow-md">
+<span class="material-symbols-outlined text-[28px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Activate Route
+                    </button>
+</div>
+</div>
+<!-- Quick Stats Column -->
+<div class="md:col-span-4 flex flex-col gap-lg">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md flex flex-col gap-2 shadow-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Completed Drops</span>
+<span class="material-symbols-outlined text-outline" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-display-lg text-display-lg text-on-background">0</span>
+<span class="font-body-md text-body-md text-outline mb-2">/ 15</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 0%;"></div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-md flex flex-col gap-2 shadow-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Estimated Finish</span>
+<span class="material-symbols-outlined text-outline" data-icon="schedule">schedule</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-background mt-2">16:45</span>
+<span class="font-body-md text-body-md text-outline">On schedule based on current traffic.</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface h-20 border-t border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-none md:hidden">
+<button class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 min-w-[64px] min-h-[48px] active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 min-w-[64px] min-h-[48px] active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="route">route</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Routes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 min-w-[64px] min-h-[48px] active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="group">group</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Customers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 min-w-[64px] min-h-[48px] active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="distance">distance</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Tracking</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 min-w-[64px] min-h-[48px] active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

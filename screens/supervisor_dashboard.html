@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supervisor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "error": "#ba1a1a",
+                            "on-primary": "#ffffff",
+                            "surface-dim": "#dbdad9",
+                            "primary-fixed-dim": "#b0c6ff",
+                            "outline": "#737783",
+                            "outline-variant": "#c3c6d4",
+                            "secondary-container": "#da3433",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            "surface-container-highest": "#e3e2e2",
+                            "on-primary-container": "#a1bbff",
+                            "tertiary-fixed-dim": "#a5c8ff",
+                            "inverse-primary": "#b0c6ff",
+                            "secondary": "#b6171e",
+                            "surface-variant": "#e3e2e2",
+                            "on-error": "#ffffff",
+                            "secondary-fixed": "#ffdad6",
+                            "error-container": "#ffdad6",
+                            "surface-container-low": "#f5f3f3",
+                            "surface-container-high": "#e9e8e7",
+                            "on-background": "#1b1c1c",
+                            "on-primary-fixed": "#001945",
+                            "primary": "#003178",
+                            "on-secondary-fixed-variant": "#930010",
+                            "on-primary-fixed-variant": "#00429c",
+                            "on-tertiary-fixed": "#001c3a",
+                            "surface": "#fbf9f9",
+                            "on-surface": "#1b1c1c",
+                            "background": "#fbf9f9",
+                            "tertiary": "#003567",
+                            "inverse-on-surface": "#f2f0f0",
+                            "surface-container-lowest": "#ffffff",
+                            "inverse-surface": "#303031",
+                            "primary-fixed": "#d9e2ff",
+                            "on-surface-variant": "#434652",
+                            "surface-container": "#efeded",
+                            "surface-tint": "#2b5bb5",
+                            "on-secondary-fixed": "#410003",
+                            "surface-bright": "#fbf9f9",
+                            "on-secondary-container": "#fffbff",
+                            "primary-container": "#0d47a1",
+                            "tertiary-container": "#004c8e",
+                            "on-tertiary-container": "#93beff",
+                            "on-tertiary-fixed-variant": "#004786",
+                            "on-error-container": "#93000a",
+                            "secondary-fixed-dim": "#ffb3ac",
+                            "tertiary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "xl": "32px",
+                            "lg": "24px",
+                            "tap-target-min": "48px",
+                            "margin-mobile": "16px",
+                            "sm": "8px",
+                            "baseline": "8px",
+                            "gutter-mobile": "16px",
+                            "xs": "4px",
+                            "md": "16px"
+                    },
+                    "fontFamily": {
+                            "title-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "label-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "title-lg": ["22px", {"lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500"}],
+                            "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600"}],
+                            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                            "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pt-[64px] pb-[80px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 flat no shadows transition-colors duration-200">
+<button class="w-[48px] h-[48px] flex items-center justify-center text-blue-900 dark:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors duration-200 active:opacity-70">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<h1 class="font-['Inter'] text-base font-semibold tracking-tight text-blue-900 dark:text-blue-400 text-lg font-black tracking-tighter">Supervisor Dashboard</h1>
+<div class="w-[48px] h-[48px] flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors duration-200 active:opacity-70">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATwg26xNZpvD-39Xhw3EdGjrg6R3MLgLvnfXQwwa6KGjURDOkLYMLbo29jy1x_qB6WxCx1tPdjqx26QXr5QQ0axqo83S1UpPhz6-41z8MD44DYPARmxaYX_k5HOmDoxyvF6jYRaD_y8zpDeude_buwv9aJBQNbF2DGT7biK5_avDcFtMTisCsAPbEqLJnHSy2INZaSkTwMSmfVKiHrDmNhK_4DncsbmwFf4lBlCV2uDmhEo-nSOiVV9-lzQwvPkUXjuRqc1u0nMVs"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto p-margin-mobile md:p-lg flex flex-col gap-lg">
+<!-- Summary Dashboard (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Team Active Routes -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col justify-between h-[160px] hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">route</span>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-md px-2 py-1 rounded-full">Live</span>
+</div>
+<div>
+<h2 class="font-display-lg text-on-background group-hover:text-primary transition-colors">5</h2>
+<p class="font-label-lg text-on-surface-variant">My Team's Active Routes</p>
+</div>
+</div>
+<!-- Stops Done Today -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col justify-between h-[160px] hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-md px-2 py-1 rounded-full">Today</span>
+</div>
+<div>
+<h2 class="font-display-lg text-on-background group-hover:text-primary transition-colors">20</h2>
+<p class="font-label-lg text-on-surface-variant">Stops Done Today</p>
+</div>
+</div>
+<!-- Territory Customers -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex flex-col justify-between h-[160px] hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-md px-2 py-1 rounded-full">Total</span>
+</div>
+<div>
+<h2 class="font-display-lg text-on-background group-hover:text-primary transition-colors">150</h2>
+<p class="font-label-lg text-on-surface-variant">Territory Customers</p>
+</div>
+</div>
+</section>
+<!-- Quick Links -->
+<section>
+<h3 class="font-title-lg text-on-background mb-md">Quick Actions</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<button class="min-h-[48px] bg-primary text-on-primary font-label-lg rounded-DEFAULT px-md py-sm flex items-center justify-center gap-sm hover:bg-primary/90 transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">manage_accounts</span>
+                    Customer Management
+                </button>
+<button class="min-h-[48px] bg-primary text-on-primary font-label-lg rounded-DEFAULT px-md py-sm flex items-center justify-center gap-sm hover:bg-primary/90 transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">add_road</span>
+                    Route Builder
+                </button>
+<button class="min-h-[48px] bg-primary text-on-primary font-label-lg rounded-DEFAULT px-md py-sm flex items-center justify-center gap-sm hover:bg-primary/90 transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">my_location</span>
+                    Live Tracking
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface h-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-none md:hidden">
+<!-- Dashboard (Active) -->
+<button class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</button>
+<!-- Routes -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined mb-1">route</span>
+<span>Routes</span>
+</button>
+<!-- Customers -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined mb-1">group</span>
+<span>Customers</span>
+</button>
+<!-- Tracking -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined mb-1">distance</span>
+<span>Tracking</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</body></html>

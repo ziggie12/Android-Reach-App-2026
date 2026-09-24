@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Active Route - Munandy Drive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Mobile safe area for bottom nav */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dbdad9",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "outline": "#737783",
+                        "outline-variant": "#c3c6d4",
+                        "secondary-container": "#da3433",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-container": "#a1bbff",
+                        "tertiary-fixed-dim": "#a5c8ff",
+                        "inverse-primary": "#b0c6ff",
+                        "secondary": "#b6171e",
+                        "surface-variant": "#e3e2e2",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad6",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#001945",
+                        "primary": "#003178",
+                        "on-secondary-fixed-variant": "#930010",
+                        "on-primary-fixed-variant": "#00429c",
+                        "on-tertiary-fixed": "#001c3a",
+                        "surface": "#fbf9f9",
+                        "on-surface": "#1b1c1c",
+                        "background": "#fbf9f9",
+                        "tertiary": "#003567",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#d9e2ff",
+                        "on-surface-variant": "#434652",
+                        "surface-container": "#efeded",
+                        "surface-tint": "#2b5bb5",
+                        "on-secondary-fixed": "#410003",
+                        "surface-bright": "#fbf9f9",
+                        "on-secondary-container": "#fffbff",
+                        "primary-container": "#0d47a1",
+                        "tertiary-container": "#004c8e",
+                        "on-tertiary-container": "#93beff",
+                        "on-tertiary-fixed-variant": "#004786",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "tertiary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "tap-target-min": "48px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "baseline": "8px",
+                        "gutter-mobile": "16px",
+                        "xs": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg text-body-lg h-screen w-screen overflow-hidden flex flex-col antialiased">
+<!-- TopAppBar (Web & Mobile, though layout typically dictates mobile map is full screen, we keep header for context as it's a top level destination "Routes") -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-surface border-b border-surface-container-high shadow-sm">
+<div class="flex items-center gap-xs">
+<button class="w-tap-target-min h-tap-target-min flex items-center justify-center text-primary hover:bg-surface-container rounded-full transition-colors active:opacity-70">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">Munandy Drive</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-tap-target-min h-tap-target-min flex items-center justify-center text-primary hover:bg-surface-container rounded-full transition-colors active:opacity-70">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">refresh</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas Area -->
+<main class="flex-1 relative mt-16 mb-20 md:mb-0 bg-surface-dim overflow-hidden">
+<!-- Full Screen Map Background -->
+<div class="absolute inset-0 bg-surface-container-highest z-0">
+<img alt="A high contrast, minimalist map view suitable for sunlight visibility. The map shows roads in light grey against a clean, off-white background with subtle topographic details. The aesthetic is strictly modern corporate logistics, avoiding any overly bright or decorative colors, sticking to a functional, precise navigation tool appearance." class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A high contrast, minimalist map view suitable for sunlight visibility. The map shows roads in light grey against a clean, off-white background with subtle topographic details. The aesthetic is strictly modern corporate logistics, avoiding any overly bright or decorative colors, sticking to a functional, precise navigation tool appearance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT1XoqjFwFrXExrsIApdJjmq7Ed0pSjBl-PoJrj5C3QJJDMB7T2SN4spzEyvaiMSZ2le27N4iFrbvaWZHN4kEPuY3sYdvAsp-MPPbXfevGdo8hIQJnR0WYnsXKejob51BPdBStjqyWNGD4COqkwMYYnTxhVKiThc20ibj9JRYWYXCDxYaqdOFIRvuGTeClVf9AKI2mkphvSlAHxlqkYg9ERN4BHk91V3FpBCo9EB3dAEwvDSrAkNCowxWYkPqn-b47qdY_qNSxE9A"/>
+</div>
+<!-- Map Overlays / Pins -->
+<div class="absolute inset-0 z-10 pointer-events-none">
+<!-- Current Location Blue Dot -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<div class="w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md animate-pulse relative">
+<div class="absolute inset-0 rounded-full bg-primary opacity-30 scale-150 animate-ping"></div>
+</div>
+</div>
+<!-- Stop Pin 1 -->
+<div class="absolute top-[30%] left-[60%] flex flex-col items-center pointer-events-auto">
+<div class="w-8 h-8 bg-surface text-primary font-label-lg text-label-lg rounded-full flex items-center justify-center border-2 border-primary shadow-sm">
+                    1
+                </div>
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-2 h-1 bg-primary rounded-full shadow-sm"></div>
+</div>
+<!-- Stop Pin 2 (Next Stop) -->
+<div class="absolute top-[45%] left-[40%] flex flex-col items-center pointer-events-auto">
+<div class="px-3 py-1 bg-primary text-on-primary font-label-lg text-label-lg rounded-full flex items-center justify-center shadow-lg relative">
+                    2
+                    <!-- Indicator ring -->
+<div class="absolute -inset-1 border-2 border-primary rounded-full opacity-50"></div>
+</div>
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-2 h-1 bg-primary rounded-full shadow-sm"></div>
+</div>
+<!-- Route Line (Placeholder SVG for visual representation) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none stroke-primary" style="stroke-width: 4px; stroke-dasharray: 8 8; fill: none; opacity: 0.6;">
+<path d="M 50vw 50vh L 40vw 45vh L 60vw 30vh" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- High Contrast FAB (Contextual for Map - e.g., Center location) -->
+<button class="absolute bottom-40 right-margin-mobile md:bottom-lg md:right-lg w-14 h-14 bg-surface text-primary rounded-xl shadow-lg border border-surface-container flex items-center justify-center z-20 hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+</button>
+<!-- Bottom Sheet Panel (Next Stop) -->
+<div class="absolute bottom-0 left-0 w-full z-30 bg-surface rounded-t-[24px] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] border-t border-surface-container flex flex-col">
+<!-- Pull Handle -->
+<div class="w-full flex justify-center py-sm cursor-pointer">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="px-margin-mobile pb-xl pt-xs flex flex-col gap-lg">
+<!-- Status & Title -->
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider font-bold">Next Stop</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">Acme Corp Logistics Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                        124 Industrial Pkwy, Sector 7
+                    </p>
+</div>
+<!-- Action Buttons (Large Tap Targets for Field Use) -->
+<div class="flex flex-col gap-md">
+<button class="w-full min-h-tap-target-min flex items-center justify-center gap-sm border-2 border-primary text-primary bg-surface rounded-lg font-label-lg text-label-lg hover:bg-surface-container active:opacity-70 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">navigation</span>
+                        Navigate
+                    </button>
+<button class="w-full min-h-tap-target-min flex items-center justify-center gap-sm bg-surface-container text-outline border border-surface-container-highest rounded-lg font-label-lg text-label-lg cursor-not-allowed opacity-70" disabled="">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">check_circle</span>
+                        Mark Arrived
+                        <span class="font-body-md text-body-md font-normal ml-xs">(Within 100m)</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) - Generated from JSON strictly matching intent "Routes" -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface h-20 border-t border-surface-container-high md:hidden">
+<!-- Item 1: Dashboard (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<!-- Item 2: Routes (Active - Direct Match) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl px-4 py-1 font-bold active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">route</span>
+<span class="font-label-md text-label-md">Routes</span>
+</button>
+<!-- Item 3: Customers (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</button>
+<!-- Item 4: Tracking (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">distance</span>
+<span class="font-label-md text-label-md">Tracking</span>
+</button>
+<!-- Item 5: Profile (Inactive) -->
+<button class="flex flex-col items-center justify-center text-outline px-4 py-1 hover:text-primary active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+</nav>
+<!-- SideNav for Web (Hidden on Mobile) - Derived from BottomNav intent for desktop consistency -->
+<nav class="hidden md:flex flex-col fixed inset-y-0 left-0 w-20 bg-surface border-r border-surface-container-high z-40 mt-16 pt-lg items-center gap-xl">
+<button class="w-12 h-12 flex flex-col items-center justify-center text-outline hover:text-primary rounded-xl transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl shadow-sm transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">route</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center text-outline hover:text-primary rounded-xl transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center text-outline hover:text-primary rounded-xl transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">distance</span>
+</button>
+</nav>
+</body></html>

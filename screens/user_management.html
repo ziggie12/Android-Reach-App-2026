@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dbdad9",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "outline": "#737783",
+                    "outline-variant": "#c3c6d4",
+                    "secondary-container": "#da3433",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-primary-container": "#a1bbff",
+                    "tertiary-fixed-dim": "#a5c8ff",
+                    "inverse-primary": "#b0c6ff",
+                    "secondary": "#b6171e",
+                    "surface-variant": "#e3e2e2",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdad6",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-high": "#e9e8e7",
+                    "on-background": "#1b1c1c",
+                    "on-primary-fixed": "#001945",
+                    "primary": "#003178",
+                    "on-secondary-fixed-variant": "#930010",
+                    "on-primary-fixed-variant": "#00429c",
+                    "on-tertiary-fixed": "#001c3a",
+                    "surface": "#fbf9f9",
+                    "on-surface": "#1b1c1c",
+                    "background": "#fbf9f9",
+                    "tertiary": "#003567",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#303031",
+                    "primary-fixed": "#d9e2ff",
+                    "on-surface-variant": "#434652",
+                    "surface-container": "#efeded",
+                    "surface-tint": "#2b5bb5",
+                    "on-secondary-fixed": "#410003",
+                    "surface-bright": "#fbf9f9",
+                    "on-secondary-container": "#fffbff",
+                    "primary-container": "#0d47a1",
+                    "tertiary-container": "#004c8e",
+                    "on-tertiary-container": "#93beff",
+                    "on-tertiary-fixed-variant": "#004786",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#ffb3ac",
+                    "tertiary-fixed": "#d4e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "tap-target-min": "48px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "baseline": "8px",
+                    "gutter-mobile": "16px",
+                    "xs": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["22px", {"lineHeight": "28px", "letterSpacing": "0px", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "letterSpacing": "0px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Hide scrollbar for clean filter chip row */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md pb-24 md:pb-8 pt-16 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+<button aria-label="menu" class="w-12 h-12 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-70 text-blue-900 dark:text-blue-400 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<span class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Munandy Drive</span>
+<div class="w-12 h-12 flex items-center justify-center rounded-full overflow-hidden border border-outline-variant hover:bg-slate-100 transition-colors cursor-pointer">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up, professional headshot of a corporate logistics administrator in a brightly lit modern office setting. The lighting is soft and even, typical of a high-end corporate environment. The image relies on a clean, professional aesthetic complementing the application's light-mode design system with deep blue brand accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJiPGsK2zN1E1FI9V1-5nR1p88mwtwXcB15VRhTVXHj1fgOe1ri3PRcEgSrIdi0NAH5q5sUVnB3mOzmfKNtRsZ1HdioEQKk4baDljUnxKSrRbFEvqHvSSksnK8sf73i54t2N6gPu4WCGURUM8AX_Nqkf66_fA-tQ-WNL7BfGa8hiKDUj3vBKhbY7Yj3KvuE64dFSjItF3kKeAedAyN1kgD_odA4gy6dCacYmwxd_Nr5r2uBbspBsMbvBKCcB9LswuweX_RA5khbA8"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-lg pt-lg flex flex-col gap-lg">
+<!-- Header & Search Section -->
+<div class="flex flex-col gap-md">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-background">User Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage personnel roles and access levels.</p>
+</div>
+<!-- Search Bar (MD3 Outlined) -->
+<div class="relative w-full max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">search</span>
+<input class="w-full h-tap-target-min pl-12 pr-4 bg-surface-container-lowest border border-outline rounded-lg font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:border-primary focus:border-2 focus:outline-none transition-all duration-200" placeholder="Search by name or email..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm overflow-x-auto no-scrollbar py-1">
+<button class="h-10 px-4 rounded-lg bg-secondary-container text-on-secondary-container font-label-lg text-label-lg whitespace-nowrap flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                    All Roles
+                </button>
+<button class="h-10 px-4 rounded-lg bg-surface border border-outline-variant text-on-surface-variant font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container transition-colors">
+                    Admin
+                </button>
+<button class="h-10 px-4 rounded-lg bg-surface border border-outline-variant text-on-surface-variant font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container transition-colors">
+                    Supervisor
+                </button>
+<button class="h-10 px-4 rounded-lg bg-surface border border-outline-variant text-on-surface-variant font-label-lg text-label-lg whitespace-nowrap hover:bg-surface-container transition-colors">
+                    Salesman
+                </button>
+</div>
+</div>
+<!-- High-End User List (Bento-style Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- User Card 1 -->
+<div class="group relative bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+<!-- Swipe to deactivate hint background -->
+<div class="absolute inset-y-0 right-0 w-24 bg-error-container flex items-center justify-end pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<span class="material-symbols-outlined text-on-error-container">block</span>
+</div>
+<!-- Main Card Content (slides slightly on hover to hint at swipe) -->
+<div class="relative z-10 bg-surface-container-low h-full p-md flex flex-col justify-between gap-md group-hover:-translate-x-2 transition-transform duration-300 border-r border-transparent group-hover:border-outline-variant">
+<div class="flex justify-between items-start">
+<div class="flex gap-md items-center">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-title-lg text-title-lg font-bold">
+                                JD
+                            </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-background leading-tight">John Doe</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">john.doe@munandy.com</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-variant border border-outline-variant gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">shield_person</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Admin</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-md text-label-md text-on-surface">Active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Card 2 -->
+<div class="group relative bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+<div class="absolute inset-y-0 right-0 w-24 bg-error-container flex items-center justify-end pr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<span class="material-symbols-outlined text-on-error-container">block</span>
+</div>
+<div class="relative z-10 bg-surface-container-low h-full p-md flex flex-col justify-between gap-md group-hover:-translate-x-2 transition-transform duration-300 border-r border-transparent group-hover:border-outline-variant">
+<div class="flex justify-between items-start">
+<div class="flex gap-md items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A vibrant headshot of a female supervisor working in a modern logistics hub. She is wearing professional attire. The lighting is bright and crisp, highlighting a clean, efficient corporate environment that matches the application's sleek, light-mode design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3Mqrqhr71WWgzhrGkIazdHGmAE719fqREfLrkOYk_4wGyb0uax6gZMz9F2gbLlg7uhORmBI5FiqnHDMoeJWf0jP3no68Dngoyue1P3jzdtLaMz7xlYM90KuRx9NcsBeHVjGBsOewdlhM0LIVktfNCM4fiH27zkxnuAabHxSvG5MPqAdjUQOaOl3X0FOsjD1i4wOH464rbC2ev7LWYhi7m7SJH15UyfGHNEqmCOP8VyJ3VMXkx2yCNUVqD2tOon5SFEw_v8niz0Bg"/>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-background leading-tight">Sarah Jenkins</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">s.jenkins@munandy.com</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-variant border border-outline-variant gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">group</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Supervisor</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-md text-label-md text-on-surface">Active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Card 3 (Inactive) -->
+<div class="group relative bg-surface-container border border-outline-variant rounded-xl overflow-hidden shadow-sm opacity-75">
+<div class="relative z-10 bg-surface-container h-full p-md flex flex-col justify-between gap-md">
+<div class="flex justify-between items-start">
+<div class="flex gap-md items-center">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-outline font-title-lg text-title-lg font-bold">
+                                MW
+                            </div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface-variant leading-tight">Mike Wallace</h3>
+<p class="font-body-md text-body-md text-outline">m.wallace@munandy.com</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface border border-outline-variant gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">local_shipping</span>
+<span class="font-label-md text-label-md text-outline uppercase tracking-wider">Salesman</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="font-label-md text-label-md text-outline">Inactive</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button aria-label="Add User" class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-14 h-14 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:bg-primary-fixed-variant transition-all duration-200 z-40 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe bg-surface h-20 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-none">
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">route</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Routes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Customers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">distance</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Tracking</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 active:scale-95 transition-transform duration-150 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[12px] font-medium mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

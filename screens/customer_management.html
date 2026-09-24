@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dbdad9",
+                      "primary-fixed-dim": "#b0c6ff",
+                      "outline": "#737783",
+                      "outline-variant": "#c3c6d4",
+                      "secondary-container": "#da3433",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e3e2e2",
+                      "on-primary-container": "#a1bbff",
+                      "tertiary-fixed-dim": "#a5c8ff",
+                      "inverse-primary": "#b0c6ff",
+                      "secondary": "#b6171e",
+                      "surface-variant": "#e3e2e2",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#ffdad6",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f5f3f3",
+                      "surface-container-high": "#e9e8e7",
+                      "on-background": "#1b1c1c",
+                      "on-primary-fixed": "#001945",
+                      "primary": "#003178",
+                      "on-secondary-fixed-variant": "#930010",
+                      "on-primary-fixed-variant": "#00429c",
+                      "on-tertiary-fixed": "#001c3a",
+                      "surface": "#fbf9f9",
+                      "on-surface": "#1b1c1c",
+                      "background": "#fbf9f9",
+                      "tertiary": "#003567",
+                      "inverse-on-surface": "#f2f0f0",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#303031",
+                      "primary-fixed": "#d9e2ff",
+                      "on-surface-variant": "#434652",
+                      "surface-container": "#efeded",
+                      "surface-tint": "#2b5bb5",
+                      "on-secondary-fixed": "#410003",
+                      "surface-bright": "#fbf9f9",
+                      "on-secondary-container": "#fffbff",
+                      "primary-container": "#0d47a1",
+                      "tertiary-container": "#004c8e",
+                      "on-tertiary-container": "#93beff",
+                      "on-tertiary-fixed-variant": "#004786",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#ffb3ac",
+                      "tertiary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "lg": "24px",
+                      "tap-target-min": "48px",
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "baseline": "8px",
+                      "gutter-mobile": "16px",
+                      "xs": "4px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "0px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.1px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.25px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean UI but allow scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg antialiased min-h-screen flex flex-col pt-16 pb-20 md:pb-0 md:pl-80">
+<!-- TopAppBar (Mobile & Tablet) -->
+<header class="bg-white dark:bg-slate-950 docked full-width top-0 border-b border-slate-200 dark:border-slate-800 flat no shadows fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 md:hidden">
+<button class="w-[48px] h-[48px] flex items-center justify-center text-blue-900 dark:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 active:opacity-70 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-lg font-black text-blue-900 dark:text-white tracking-tighter">Munandy Drive</h1>
+<div class="w-[48px] h-[48px] flex items-center justify-center cursor-pointer">
+<img alt="User profile photo" class="w-8 h-8 rounded-full border border-slate-200" data-alt="A professional headshot of a mature male user in a well-lit studio environment. The lighting is soft and flattering, creating a polished corporate look. The background is a subtle, out-of-focus gray to maintain the clean, modern aesthetic of the overall UI. The mood is confident and reliable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7KSGmwFrnk0Vgu6HYI33SVqByKgpk8VY_mgWteSc1_BzYIGkxbbe3sRaDiuj6sDxz4hoW410O4WG-Lu3V47-1nsf1SRSYgWVo7GPuQ08vxD38P63EP9M92I_9mq2MLcJBIe1YQxPr1d8nBGm5lCF-rYTOSizC2n6Rwhb7VvRX9JvMb66OOP8W7tY8lgseKZbIXOiuml8ROGwqaKRgJ-owqyEpp6WFuoFiRbxrLYbXad0LnKXV7rxPYRAk_HQpIDiXjuFWtUOYDqk"/>
+</div>
+</header>
+<!-- NavigationDrawer (Web/Desktop) -->
+<nav class="hidden md:flex bg-white dark:bg-slate-900 rounded-r-2xl h-full divide-y divide-slate-100 dark:divide-slate-800 shadow-2xl fixed inset-y-0 left-0 w-80 z-[60] p-4 flex flex-col gap-2">
+<div class="flex items-center gap-4 px-4 py-6">
+<img alt="User profile photo" class="w-12 h-12 rounded-full border border-slate-200" data-alt="A professional headshot of a mature male user in a well-lit studio environment. The lighting is soft and flattering, creating a polished corporate look. The background is a subtle, out-of-focus gray to maintain the clean, modern aesthetic of the overall UI. The mood is confident and reliable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVMn2jnMFQUsW3-HYSZri-LVivi5Q1WWVMBQ6dVnh8wfehTryTAVbhFXgTRrt9a9kLYaK748XGcFwFC159UgJf2p134PpnYdPjYjFEtOzdYI9hv0Jsr-ds-VhusvOWgBYJXcEu50tVjndPFO2mRVqYltUPG9U31QBvYlAcnnSMyOUAyVzaRbIzGV-5-tj54OEQaal3dWG7ucFJ-TIklbOjd9QWZ1SSJSJte8ZiIseEt-zXz83TNgNtL5scQxYIH7fOSAK-6caXcUk"/>
+<div>
+<h2 class="text-blue-900 dark:text-blue-100 font-bold text-title-lg">Admin User</h2>
+<p class="text-slate-500 font-body-md">Munandy Drive Logistics</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-4">
+<!-- Mapping "Customers" intent to these drawer items is tricky. Let's assume this drawer is the global nav. "Role Settings" or "Fleet Overview" aren't a direct match. The TopAppBar/BottomNavBar have "Customers". We will add "Customers" here to align the systems, though the JSON for NavDrawer only lists 4.  Wait, Strict adherence to JSON content: Label texts are ["Fleet Overview", "Inventory", "Reports", "Role Settings"]. I MUST not alter JSON strings. I will highlight none here if it doesn't match perfectly. But BottomNavBar has "Customers". The prompt mentions "Customer Management Page". I will highlight none in NavDrawer, or maybe 'Fleet Overview' as a fallback? Intent Fallback: None really fit. I'll highlight none. -->
+<a class="flex items-center gap-3 px-4 h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 font-['Inter'] text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                Fleet Overview
+            </a>
+<a class="flex items-center gap-3 px-4 h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 font-['Inter'] text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 font-['Inter'] text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-4 h-[48px] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 font-['Inter'] text-sm font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+                Role Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 py-6 md:px-lg md:py-lg max-w-7xl mx-auto w-full flex flex-col gap-6">
+<!-- Header & Search Section -->
+<div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-background">Customer Directory</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Manage and locate delivery points across all zones.</p>
+</div>
+<!-- Search and Filter Controls -->
+<div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-[48px] pl-10 pr-4 bg-surface-container rounded-lg border border-outline-variant focus:border-primary focus:border-2 focus:ring-0 text-body-lg font-body-lg placeholder:text-outline transition-all" placeholder="Search customers..." type="text"/>
+</div>
+<div class="relative min-w-[120px]">
+<select class="w-full h-[48px] pl-4 pr-10 appearance-none bg-surface-container rounded-lg border border-outline-variant focus:border-primary focus:border-2 focus:ring-0 text-body-lg font-body-lg text-on-surface transition-all cursor-pointer">
+<option value="all">All Zones</option>
+<option value="north">North Zone</option>
+<option value="south">South Zone</option>
+<option value="east">East Zone</option>
+<option value="west">West Zone</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Filter Chips (Quick Filters) -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="h-[32px] px-4 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap border border-transparent transition-colors">
+                All Zones
+            </button>
+<button class="h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-high transition-colors">
+                North
+            </button>
+<button class="h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-high transition-colors">
+                South
+            </button>
+<button class="h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-high transition-colors">
+                East
+            </button>
+<button class="h-[32px] px-4 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-high transition-colors">
+                West
+            </button>
+</div>
+<!-- Customer Grid (Bento style / Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<!-- Customer Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-4 min-h-[160px] relative hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-title-lg text-title-lg">
+                            A
+                        </div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Acme Corp Logistics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">CUST-1042</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors w-[48px] h-[48px] -mt-2 -mr-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">West Zone</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">08:00 - 17:00</span>
+</div>
+</div>
+</div>
+<!-- Customer Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-4 min-h-[160px] relative hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-lg text-title-lg">
+                            B
+                        </div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Beta Distribution</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">CUST-2911</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors w-[48px] h-[48px] -mt-2 -mr-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">North Zone</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">06:00 - 14:00</span>
+</div>
+</div>
+</div>
+<!-- Customer Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-4 min-h-[160px] relative hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-title-lg text-title-lg">
+                            G
+                        </div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Global Retailers</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">CUST-8442</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors w-[48px] h-[48px] -mt-2 -mr-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">South Zone</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">09:00 - 18:00</span>
+</div>
+</div>
+</div>
+<!-- Customer Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-4 min-h-[160px] relative hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-title-lg text-title-lg">
+                            M
+                        </div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Mega Mart</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">CUST-0021</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors w-[48px] h-[48px] -mt-2 -mr-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">East Zone</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">24 Hours</span>
+</div>
+</div>
+</div>
+<!-- Customer Card 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-4 min-h-[160px] relative hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-lg text-title-lg">
+                            O
+                        </div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Omega Supplies</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">CUST-5532</p>
+</div>
+</div>
+<button class="text-outline hover:text-primary transition-colors w-[48px] h-[48px] -mt-2 -mr-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-auto flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">West Zone</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">10:00 - 16:00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More / Pagination placeholder -->
+<div class="flex justify-center mt-4 mb-24 md:mb-4">
+<button class="h-[48px] px-6 rounded-full bg-surface-container text-on-surface font-label-lg text-label-lg border border-outline-variant hover:bg-surface-container-high transition-colors flex items-center gap-2">
+                 Load More
+                 <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-[64px] h-[64px] bg-primary text-on-primary rounded-2xl shadow-lg flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 z-[70] active:scale-95">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-white dark:bg-slate-950 docked full-width bottom-0 border-t border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-none fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium w-full h-[48px]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium w-full h-[48px]" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="mt-1">Routes</span>
+</a>
+<!-- Active Tab: Customers -->
+<a class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-100 rounded-2xl px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium w-full h-[48px]" href="#">
+<span class="material-symbols-outlined fill-icon">group</span>
+<span class="mt-1">Customers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium w-full h-[48px]" href="#">
+<span class="material-symbols-outlined">distance</span>
+<span class="mt-1">Tracking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1 hover:text-blue-800 dark:hover:text-blue-300 active:scale-95 transition-transform duration-150 ease-in-out font-['Inter'] text-[12px] font-medium w-full h-[48px]" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
