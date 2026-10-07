@@ -61,7 +61,7 @@ fun SplashScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "Munandy Drive",
+                text = "Munandy Reach",
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )

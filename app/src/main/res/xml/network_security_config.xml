@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Default (release) policy: HTTPS only. Cleartext HTTP is blocked so login
+  passwords and auth tokens are never sent unencrypted over the internet.
+  Debug builds override this with src/debug/res/xml/network_security_config.xml
+  to allow cleartext to the local dev server.
+
+  If your VPS serves plain HTTP instead of HTTPS (not recommended), set
+  cleartextTrafficPermitted="true" below — but you should really terminate TLS.
+-->
 <network-security-config>
-    <!-- This app runs on a private LAN — cleartext HTTP is acceptable -->
-    <base-config cleartextTrafficPermitted="true">
+    <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>

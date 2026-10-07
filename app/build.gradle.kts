@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -10,6 +12,12 @@ android {
     namespace = "com.example.munandydrive"
     compileSdk = 36
 
+    // Values pulled from the gitignored local.properties (SDK path, Maps key, dev server URL).
+    val localProps = Properties().apply {
+        val f = rootProject.file("local.properties")
+        if (f.exists()) f.inputStream().use { load(it) }
+    }
+
     defaultConfig {
         applicationId = "com.example.munandydrive"
         minSdk = 29
@@ -19,16 +27,15 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val localPropsFile = rootProject.file("local.properties")
-        val mapsApiKey = if (localPropsFile.exists()) {
-            localPropsFile.readLines().find { it.startsWith("MAPS_API_KEY=") }?.substringAfter("=") ?: ""
-        } else ""
-        manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
+        manifestPlaceholders["MAPS_API_KEY"] = localProps.getProperty("MAPS_API_KEY", "")
     }
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://192.168.1.103:3000/api/\"")
+            // Local dev server. Set LOCAL_API_BASE in local.properties to your machine's LAN
+            // URL, e.g. http://192.168.1.103:3000/api/  (10.0.2.2 = Android emulator's host).
+            val localApi = localProps.getProperty("LOCAL_API_BASE", "http://10.0.2.2:3000/api/")
+            buildConfigField("String", "BASE_URL", "\"$localApi\"")
         }
         release {
             isMinifyEnabled = true
@@ -36,8 +43,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // !! Set this to your production server URL before releasing !!
-            buildConfigField("String", "BASE_URL", "\"http://192.168.1.151:3000/api/\"")
+            // Production VPS — use HTTPS. Set PROD_API_BASE in local.properties or replace the
+            // host below before building a release APK/AAB.
+            val prodApi = localProps.getProperty("PROD_API_BASE", "https://REPLACE_WITH_VPS_HOST/api/")
+            buildConfigField("String", "BASE_URL", "\"$prodApi\"")
         }
     }
     compileOptions {

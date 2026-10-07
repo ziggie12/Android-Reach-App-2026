@@ -82,7 +82,7 @@ fun LoginScreen(navController: NavHostController, viewModel: AuthViewModel) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Munandy Drive",
+                text = "Munandy Reach",
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary
             )

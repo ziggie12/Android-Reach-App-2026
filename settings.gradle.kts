@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Munandy Drive"
+rootProject.name = "Munandy Reach"
 include(":app")
