@@ -262,8 +262,11 @@ app.post('/api/routes', authenticateToken, requireRole(['Admin', 'Supervisor']),
     if (!name || !name.trim()) return res.status(400).json({ error: 'name is required' });
     if (!date) return res.status(400).json({ error: 'date is required' });
     if (!isValidDate(date.trim())) return res.status(400).json({ error: 'date must be YYYY-MM-DD' });
-    db.run(`INSERT INTO routes (name, date, created_by, assigned_to, status) VALUES (?, ?, ?, ?, 'Draft')`,
-        [name, date, req.user.id, assigned_to], function(err) {
+    // A route handed to a salesman goes live immediately so it appears on their dashboard.
+    const assignedId = (assigned_to === '' || assigned_to === undefined) ? null : assigned_to;
+    const initialStatus = assignedId != null ? 'Active' : 'Draft';
+    db.run(`INSERT INTO routes (name, date, created_by, assigned_to, status) VALUES (?, ?, ?, ?, ?)`,
+        [name, date, req.user.id, assignedId, initialStatus], function(err) {
             if (err) return res.status(500).json({ error: err.message });
             res.json({ id: this.lastID, name });
     });
@@ -357,13 +360,21 @@ app.patch('/api/routes/:id/status', authenticateToken, (req, res) => {
 app.patch('/api/routes/:id/assign', authenticateToken, requireRole(['Admin', 'Supervisor']), (req, res) => {
     const { assigned_to } = req.body;
 
-    const doAssign = (userId) => db.run(`UPDATE routes SET assigned_to = ? WHERE id = ?`,
-        [userId, req.params.id], function(err) {
+    const doAssign = (userId) => {
+        // Assigning a salesman activates the route so it shows on their dashboard;
+        // unassigning sends an active route back to Draft (leaves Complete/Inactive alone).
+        const sql = userId == null
+            ? `UPDATE routes SET assigned_to = NULL,
+                   status = CASE WHEN status = 'Active' THEN 'Draft' ELSE status END
+               WHERE id = ?`
+            : `UPDATE routes SET assigned_to = ?, status = 'Active' WHERE id = ?`;
+        const params = userId == null ? [req.params.id] : [userId, req.params.id];
+        db.run(sql, params, function(err) {
             if (err) return res.status(500).json({ error: err.message });
             if (this.changes === 0) return res.status(404).json({ error: 'Route not found' });
             res.json({ success: true });
-        }
-    );
+        });
+    };
 
     if (assigned_to == null) {
         doAssign(null);
@@ -672,6 +683,13 @@ app.get('/api/reports/summary', authenticateToken, requireRole(['Admin', 'Superv
 db.run(`DELETE FROM driver_locations WHERE timestamp < datetime('now', '-7 days')`, (err) => {
     if (err) console.error('Location cleanup error:', err.message);
     else console.log('Old driver locations pruned (>7 days)');
+});
+
+// Reconcile any route already assigned to a salesman but stuck in Draft — make it Active
+// so it shows on the salesman's dashboard (covers routes assigned before this fix).
+db.run(`UPDATE routes SET status = 'Active' WHERE assigned_to IS NOT NULL AND status = 'Draft'`, function(err) {
+    if (err) console.error('Route reconcile error:', err.message);
+    else if (this.changes > 0) console.log(`Activated ${this.changes} assigned route(s) stuck in Draft`);
 });
 
 app.listen(PORT, () => {
