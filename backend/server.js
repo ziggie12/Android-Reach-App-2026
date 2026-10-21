@@ -128,16 +128,25 @@ function sendWhatsAppNotification(toRaw, message) {
 
 // --- AUTHENTICATION ---
 app.post('/api/auth/login', loginLimiter, (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body || {};
+    if (typeof email !== 'string' || typeof password !== 'string' || !email || !password) {
+        return res.status(400).json({ error: 'email and password are required' });
+    }
     db.get(`SELECT * FROM users WHERE email = ?`, [email], async (err, user) => {
         if (err) return res.status(500).json({ error: 'Database error' });
         if (!user || user.is_active === 0) return res.status(401).json({ error: 'Invalid credentials or inactive account' });
 
-        const validPassword = await bcrypt.compare(password, user.password_hash);
-        if (!validPassword) return res.status(401).json({ error: 'Invalid credentials' });
+        // Any failure here must still send a response — otherwise the client hangs until timeout.
+        try {
+            const validPassword = await bcrypt.compare(password, user.password_hash);
+            if (!validPassword) return res.status(401).json({ error: 'Invalid credentials' });
 
-        const token = jwt.sign({ id: user.id, role: user.role, name: user.name }, SECRET_KEY, { expiresIn: '24h' });
-        res.json({ token, user: { id: user.id, name: user.name, role: user.role, email: user.email } });
+            const token = jwt.sign({ id: user.id, role: user.role, name: user.name }, SECRET_KEY, { expiresIn: '24h' });
+            res.json({ token, user: { id: user.id, name: user.name, role: user.role, email: user.email } });
+        } catch (e) {
+            console.error(`[LOGIN] failed for user ${user.id}: ${e.message}`);
+            res.status(500).json({ error: 'Login failed — contact an administrator' });
+        }
     });
 });
 
