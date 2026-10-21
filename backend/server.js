@@ -692,6 +692,9 @@ db.run(`UPDATE routes SET status = 'Active' WHERE assigned_to IS NOT NULL AND st
     else if (this.changes > 0) console.log(`Activated ${this.changes} assigned route(s) stuck in Draft`);
 });
 
-app.listen(PORT, () => {
-    console.log(`Munandy Backend running on port ${PORT}`);
-});
+// HOST is optional: set HOST=127.0.0.1 behind a reverse proxy so the port isn't
+// exposed publicly; leave unset to listen on all interfaces (LAN testing).
+const HOST = process.env.HOST;
+const onListen = () => console.log(`Munandy Backend running on ${HOST || 'all interfaces'}:${PORT}`);
+if (HOST) app.listen(PORT, HOST, onListen);
+else app.listen(PORT, onListen);
