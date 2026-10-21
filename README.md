@@ -37,8 +37,8 @@ To host on a VPS behind HTTPS (nginx + Let's Encrypt + PM2), follow **[backend/D
    MAPS_API_KEY=your_google_maps_api_key
    # Debug builds -> your local dev server (update the IP when it changes)
    LOCAL_API_BASE=http://192.168.1.103:3000/api/
-   # Release builds -> your VPS over HTTPS (optional here; falls back to the placeholder in build.gradle.kts)
-   # PROD_API_BASE=https://api.munandyfoods.co.zw/api/
+   # Release builds -> production server (optional; defaults to https://reach.munandy.co.zw/api/)
+   # PROD_API_BASE=https://reach.munandy.co.zw/api/
    ```
 3. Build & run a debug build against the local server:
    ```bash

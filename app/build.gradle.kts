@@ -43,9 +43,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Production VPS — use HTTPS. Set PROD_API_BASE in local.properties or replace the
-            // host below before building a release APK/AAB.
-            val prodApi = localProps.getProperty("PROD_API_BASE", "https://REPLACE_WITH_VPS_HOST/api/")
+            // Production server (HTTPS). Override with PROD_API_BASE in local.properties if needed.
+            val prodApi = localProps.getProperty("PROD_API_BASE", "https://reach.munandy.co.zw/api/")
             buildConfigField("String", "BASE_URL", "\"$prodApi\"")
         }
     }
