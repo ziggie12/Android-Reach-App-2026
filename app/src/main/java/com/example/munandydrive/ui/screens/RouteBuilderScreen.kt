@@ -79,6 +79,9 @@ fun RouteBuilderScreen(
     var saveError    by remember { mutableStateOf<String?>(null) }
     var saving       by remember { mutableStateOf(false) }
     var stopsLoaded  by remember { mutableStateOf(false) }
+    // Set once the new route exists on the server, so retrying a failed save reuses it
+    // instead of creating a duplicate route.
+    var createdRouteId by remember { mutableStateOf<Int?>(null) }
     val scope        = rememberCoroutineScope()
 
     LaunchedEffect(Unit) { userViewModel.refreshUsers() }
@@ -144,16 +147,22 @@ fun RouteBuilderScreen(
                 saving = true
                 scope.launch {
                     try {
-                        // Reuse existing customer IDs; only create new customers for new tapped stops
-                        val customerIds = pendingStops.map { stop ->
-                            stop.customerId
-                                ?: customerViewModel.createForRoute(stop.name, stop.lat, stop.lng, stop.address)
+                        // Every step is retry-safe, so tapping Save again after a failure
+                        // never creates duplicate customers or a duplicate route.
+                        // 1. Create customers for newly tapped stops, remembering their IDs.
+                        pendingStops.forEachIndexed { i, stop ->
+                            if (stop.customerId == null) {
+                                val id = customerViewModel.createForRoute(stop.name, stop.lat, stop.lng, stop.address)
+                                pendingStops[i] = stop.copy(customerId = id)
+                            }
                         }
-                        if (editRouteId != null) {
-                            routeViewModel.addStops(editRouteId, customerIds)
-                        } else {
-                            routeViewModel.saveRouteWithStops(routeName, routeDate, assignedTo?.id, customerIds)
-                        }
+                        val customerIds = pendingStops.map { it.customerId!! }
+                        // 2. Create the route once (edit mode already has one).
+                        val routeId = editRouteId ?: createdRouteId
+                            ?: routeViewModel.createRouteOnly(routeName, routeDate, assignedTo?.id)
+                                .also { createdRouteId = it }
+                        // 3. The server replaces the route's whole stop list, so repeating this is safe.
+                        routeViewModel.addStops(routeId, customerIds)
                         saving = false
                         navController.popBackStack()
                     } catch (e: Exception) {

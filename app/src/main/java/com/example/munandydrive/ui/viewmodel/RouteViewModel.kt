@@ -107,20 +107,9 @@ class RouteViewModel(private val repository: RouteRepository) : ViewModel() {
         }
     }
 
-    /**
-     * Suspend version used directly from a composable coroutineScope.
-     * Creates the route, adds all stops, then refreshes the list.
-     */
-    suspend fun saveRouteWithStops(
-        name: String, date: String, assignedTo: Int?,
-        customerIds: List<Int>
-    ): Int {
-        val routeId = repository.createRoute(name, date, assignedTo)
-        if (customerIds.isNotEmpty()) {
-            repository.addStops(routeId, customerIds)
-        }
-        return routeId
-    }
+    /** Creates the route only (no stops) and returns its server ID. */
+    suspend fun createRouteOnly(name: String, date: String, assignedTo: Int?): Int =
+        repository.createRoute(name, date, assignedTo)
 
     suspend fun addStops(routeId: Int, customerIds: List<Int>) {
         repository.addStops(routeId, customerIds)
