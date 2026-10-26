@@ -3,6 +3,7 @@ package com.example.munandydrive.data.remote
 import com.example.munandydrive.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
+import okhttp3.ConnectionPool
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,6 +25,10 @@ object RetrofitClient {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)  // longer for photo uploads
+            // The server (Apache) drops idle keep-alive connections after ~2s. Evict idle
+            // connections after 1s so requests never reuse one the server already closed.
+            .connectionPool(ConnectionPool(5, 1, TimeUnit.SECONDS))
+            .retryOnConnectionFailure(true)
             .build()
 
         return Retrofit.Builder()
