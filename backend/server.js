@@ -13,6 +13,11 @@ const { authenticateToken, requireRole, SECRET_KEY } = require('./middleware/aut
 
 const app = express();
 
+// Behind Apache on the VPS, requests arrive from 127.0.0.1 with the phone's real IP in
+// X-Forwarded-For. Trust only a loopback proxy so rate limiting sees each client's IP
+// (otherwise every user shares one login-attempt bucket). LAN clients can't spoof it.
+app.set('trust proxy', 'loopback');
+
 // CORS — restrict to configured origin in production, allow all in dev
 const allowedOrigin = process.env.CORS_ORIGIN || '*';
 app.use(cors({ origin: allowedOrigin }));
@@ -128,11 +133,14 @@ function sendWhatsAppNotification(toRaw, message) {
 
 // --- AUTHENTICATION ---
 app.post('/api/auth/login', loginLimiter, (req, res) => {
-    const { email, password } = req.body || {};
-    if (typeof email !== 'string' || typeof password !== 'string' || !email || !password) {
+    const { password } = req.body || {};
+    // Phone keyboards auto-capitalise and autocomplete adds trailing spaces, so match the
+    // email trimmed and case-insensitively.
+    const email = typeof req.body?.email === 'string' ? req.body.email.trim() : '';
+    if (!email || typeof password !== 'string' || !password) {
         return res.status(400).json({ error: 'email and password are required' });
     }
-    db.get(`SELECT * FROM users WHERE email = ?`, [email], async (err, user) => {
+    db.get(`SELECT * FROM users WHERE email = ? COLLATE NOCASE`, [email], async (err, user) => {
         if (err) return res.status(500).json({ error: 'Database error' });
         if (!user || user.is_active === 0) return res.status(401).json({ error: 'Invalid credentials or inactive account' });
 

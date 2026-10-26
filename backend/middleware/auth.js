@@ -16,7 +16,9 @@ function authenticateToken(req, res, next) {
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
+        // Expired or invalid token = not authenticated (401), so the app sends the user back
+        // to the login screen. 403 is reserved for "logged in but not allowed" (requireRole).
+        if (err) return res.status(401).json({ error: 'Session expired. Please log in again.' });
         req.user = user;
         next();
     });
